@@ -1,0 +1,20 @@
+{
+  "name": "Lost VRChat Tools Repo",
+  "id": "com.lostfxn.vrchattools.repo",
+  "author": "Lostfxn",
+  "url": "https://github.com/Lostfxn/Lost-VRChat-Scripts",
+  "packages": [
+    {
+      "id": "com.lost.hierarchyplus",
+      "name": "HierarchyPlus",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "url": "https://github.com/Lostfxn/Lost-VRChat-Scripts.git#main",
+          "unity": "2022.3",
+          "vpmDependencies": {}
+        }
+      ]
+    }
+  ]
+}
