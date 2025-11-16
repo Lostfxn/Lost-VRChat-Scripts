@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lost VRChat Tools</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #0b0b0d;
+        color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background: #121217;
+        padding: 20px;
+        border-bottom: 2px solid #2a2a31;
+        text-align: center;
+    }
+    h1 {
+        margin: 0;
+        font-size: 32px;
+        color: #6bc7ff;
+    }
+    #packages {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 10px;
+    }
+    .package {
+        background: #16161c;
+        border: 1px solid #2b2b32;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .package h2 {
+        margin: 0;
+        color: #79d4ff;
+    }
+    .version {
+        opacity: 0.7;
+        margin-bottom: 10px;
+    }
+    a.install {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 14px;
+        background: #0078ff;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    a.install:hover {
+        background: #0a92ff;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Lost VRChat Tools</h1>
+    <p>Useful tools for VRChat creators, avatar artists, and world builders.</p>
+</header>
+
+<div id="packages">
+    <p>Loading packages…</p>
+</div>
+
+<script>
+// URL to your VCC repo JSON
+const REPO_URL = "https://raw.githubusercontent.com/Lostfxn/Lost-VRChat-Scripts/main/vcc-repo.json";
+
+async function loadRepo() {
+    const container = document.getElementById("packages");
+
+    try {
+        const res = await fetch(REPO_URL);
+        const data = await res.json();
+
+        container.innerHTML = "";
+
+        for (const pkgId in data.packages) {
+            const pkg = data.packages[pkgId];
+            const versionKey = Object.keys(pkg.versions).pop(); 
+            const info = pkg.versions[versionKey];
+
+            const el = document.createElement("div");
+            el.className = "package";
+
+            el.innerHTML = `
+                <h2>${info.displayName || pkgId}</h2>
+                <div class="version">Version: ${versionKey}</div>
+                <p>${info.description || "No description provided."}</p>
+
+                <a class="install" 
+                   href="vcc://vpm/addRepo?url=https://raw.githubusercontent.com/Lostfxn/Lost-VRChat-Scripts/main/vcc-repo.json">
+                   Install via VCC
+                </a>
+            `;
+
+            container.appendChild(el);
+        }
+
+    } catch (err) {
+        container.innerHTML = "<p style='color:red;'>Failed to load repository.</p>";
+        console.error(err);
+    }
+}
+
+loadRepo();
+</script>
+
+</body>
+</html>
