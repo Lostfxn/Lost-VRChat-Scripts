@@ -8,9 +8,15 @@
       "versions": {
         "1.0.0": {
           "name": "com.lost.hierarchyplus",
-          "url": "https://github.com/Lostfxn/Lost-VRChat-Scripts.git#main",
-          "localPath": "Packages/com.lost.hierarchyplus",
+          "displayName": "HierarchyPlus",
+          "description": "Custom icons and hierarchy tools for VRChat avatar creation.",
+          "version": "1.0.0",
           "unity": "2022.3",
+          "localPath": "Packages/com.lost.hierarchyplus",
+          "url": "https://github.com/Lostfxn/Lost-VRChat-Scripts.git#main",
+          "author": {
+            "name": "Lostfxn"
+          },
           "vpmDependencies": {}
         }
       }
