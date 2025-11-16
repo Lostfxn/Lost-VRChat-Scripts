@@ -1,268 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lost VRChat Tools</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --bg-alt: #111827;
-      --border: #1f2937;
-      --accent: #3b82f6;
-      --accent-soft: #1d4ed8;
-      --text: #e5e7eb;
-      --text-muted: #9ca3af;
-      --code-bg: #020617;
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: radial-gradient(circle at top, #1e293b 0, #020617 40%);
-      color: var(--text);
-    }
-    .wrap {
-      max-width: 900px;
-      margin: 40px auto 60px;
-      padding: 0 16px;
-    }
-    header {
-      margin-bottom: 32px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 16px;
-    }
-    header h1 {
-      margin: 0 0 4px;
-      font-size: 32px;
-      font-weight: 700;
-    }
-    header p {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Lost VRChat Tools – VPM Listing</title>
 
-    .section {
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 18px 20px;
-      margin-bottom: 18px;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
-    }
-    .section h2 {
-      margin: 0 0 8px;
-      font-size: 18px;
-    }
-    .section p {
-      margin: 4px 0;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
+    <!-- Fluent UI web components -->
+    <script
+      type="module"
+      src="https://unpkg.com/@fluentui/web-components"
+    ></script>
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-      color: white;
-      font-size: 13px;
-      font-weight: 600;
-      text-decoration: none;
-      margin: 8px 0 4px;
-      cursor: pointer;
-      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.5);
-    }
-    .btn span.icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      font-size: 11px;
-    }
-    .btn:hover {
-      filter: brightness(1.05);
-      transform: translateY(-1px);
-    }
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-    code {
-      display: inline-block;
-      background: var(--code-bg);
-      border: 1px solid var(--border);
-      padding: 5px 8px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-family: ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono",
-        "Courier New", monospace;
-      color: #cbd5f5;
-    }
+  <body>
+    <div class="col align-items-center">
+      <div class="content m-4">
+        <!-- Header -->
+        <div class="mb-3">
+          <h1>Lost VRChat Tools</h1>
+          <div class="caption1">
+            Useful tools for VRChat creators, avatar artists, and world
+            builders.
+          </div>
+          <div class="caption2">
+            VPM repository managed by <strong>Lost</strong>.
+          </div>
+        </div>
 
-    .packages-list {
-      margin-top: 6px;
-    }
-    .pkg {
-      border-top: 1px solid var(--border);
-      padding-top: 10px;
-      margin-top: 10px;
-    }
-    .pkg:first-child {
-      border-top: none;
-      margin-top: 0;
-      padding-top: 0;
-    }
-    .pkg-name {
-      font-size: 15px;
-      font-weight: 600;
-    }
-    .pkg-id {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-    .pkg-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin: 4px 0;
-    }
-    .pkg-meta {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
+        <!-- URL bar + Add to VCC -->
+        <div class="row align-items-center mb-2">
+          <fluent-text-field
+            id="vccListingInfoUrlField"
+            class="vccUrlField"
+            value="https://raw.githubusercontent.com/Lostfxn/Lost-VRChat-Scripts/main/vcc-repo.json"
+            readonly
+          >
+          </fluent-text-field>
 
-    footer {
-      max-width: 900px;
-      margin: 0 auto 30px;
-      padding: 0 16px;
-      font-size: 11px;
-      color: var(--text-muted);
-      text-align: right;
-    }
-    footer a {
-      color: var(--text-muted);
-    }
+          <fluent-button
+            id="vccAddRepoButton"
+            appearance="accent"
+            class="ms-2"
+          >
+            Add to VCC
+          </fluent-button>
 
-    @media (max-width: 640px) {
-      .wrap {
-        margin-top: 24px;
-      }
-      header h1 {
-        font-size: 26px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <h1>Lost VRChat Tools</h1>
-      <p>Useful tools for VRChat creators, avatar artists, and world builders.</p>
-    </header>
+          <fluent-button
+            id="vccListingInfoUrlFieldCopy"
+            class="ms-2"
+            appearance="neutral"
+          >
+            Copy
+          </fluent-button>
 
-    <section class="section">
-      <h2>Install via VRChat Creator Companion (VCC)</h2>
-      <p>Click the button below to add this repository to VCC:</p>
+          <fluent-button
+            id="urlBarHelp"
+            class="ms-2"
+            appearance="stealth"
+          >
+            ?
+          </fluent-button>
+        </div>
 
-      <a
-        class="btn"
-        href="vcc://vpm/addRepo?url=https://raw.githubusercontent.com/Lostfxn/Lost-VRChat-Scripts/main/vcc-repo.json"
-      >
-        <span class="icon">V</span>
-        <span>Install via VCC</span>
-      </a>
-
-      <p>Or manually paste this URL into VCC:</p>
-      <code>https://raw.githubusercontent.com/Lostfxn/Lost-VRChat-Scripts/main/vcc-repo.json</code>
-    </section>
-
-    <section class="section" id="packages-section">
-      <h2>Packages</h2>
-      <p id="packages-loading">Loading packages from repository…</p>
-      <div class="packages-list" id="packages-list"></div>
-    </section>
-
-    <section class="section">
-      <h2>Source</h2>
-      <p>
-        Repository:
-        <a href="https://github.com/Lostfxn/Lost-VRChat-Scripts" style="color: var(--accent);">
-          github.com/Lostfxn/Lost-VRChat-Scripts
-        </a>
-      </p>
-    </section>
-  </div>
-
-  <footer>
-    <span>Lost • Hosted on GitHub Pages</span>
-  </footer>
-
-  <script>
-    const REPO_URL =
-      "https://raw.githubusercontent.com/Lostfxn/Lost-VRChat-Scripts/main/vcc-repo.json";
-
-    async function loadPackages() {
-      const loadingEl = document.getElementById("packages-loading");
-      const listEl = document.getElementById("packages-list");
-
-      try {
-        const res = await fetch(REPO_URL);
-        const data = await res.json();
-
-        loadingEl.textContent = "";
-        listEl.innerHTML = "";
-
-        const pkgs = data.packages || {};
-
-        for (const pkgId in pkgs) {
-          const pkg = pkgs[pkgId];
-          const versions = pkg.versions || {};
-          const versionKeys = Object.keys(versions);
-          if (!versionKeys.length) continue;
-
-          // take latest version (last key)
-          const latestKey = versionKeys[versionKeys.length - 1];
-          const info = versions[latestKey];
-
-          const name = info.displayName || pkgId;
-          const desc =
-            info.description || "No description provided.";
-          const unity = info.unity || "Unknown";
-          const type = info.type || "tool";
-
-          const pkgDiv = document.createElement("div");
-          pkgDiv.className = "pkg";
-          pkgDiv.innerHTML = `
-            <div class="pkg-name">${name}</div>
-            <div class="pkg-id">${pkgId}</div>
-            <div class="pkg-desc">${desc}</div>
-            <div class="pkg-meta">
-              Version: ${latestKey} • Unity: ${unity} • Type: ${type}
+        <!-- Small help dialog for URL bar -->
+        <fluent-dialog
+          id="addListingToVccHelp"
+          hidden
+        >
+          <div class="col p-3">
+            <h3 class="m-0 mb-2">How to add this listing to VCC</h3>
+            <p class="m-0 mb-2">
+              1. Open <strong>VRChat Creator Companion</strong>.<br />
+              2. Go to <strong>Settings → Packages → Add Repository</strong>.<br />
+              3. Paste the URL from the field above.<br />
+              4. Click <strong>Add</strong>.
+            </p>
+            <div class="row justify-content-end mt-2">
+              <fluent-button
+                id="addListingToVccHelpClose"
+                appearance="neutral"
+              >
+                Close
+              </fluent-button>
             </div>
-          `;
-          listEl.appendChild(pkgDiv);
-        }
+          </div>
+        </fluent-dialog>
 
-        if (!listEl.children.length) {
-          loadingEl.textContent = "No packages found in this repository.";
-        }
+        <!-- Search -->
+        <div class="searchBlock">
+          <div class="root">
+            <fluent-text-field
+              id="searchInput"
+              placeholder="Search packages…"
+            >
+            </fluent-text-field>
+          </div>
+        </div>
 
-      } catch (err) {
-        console.error(err);
-        loadingEl.textContent =
-          "Failed to load packages. Check vcc-repo.json or try again later.";
-      }
-    }
+        <!-- Packages grid -->
+        <div class="packages">
+          <fluent-data-grid
+            id="packageGrid"
+            grid-template-columns="2.4fr 3fr 0.8fr 1.4fr"
+          >
+            <!-- Header row -->
+            <fluent-data-grid-row row-type="header">
+              <fluent-data-grid-cell>Name</fluent-data-grid-cell>
+              <fluent-data-grid-cell>Description</fluent-data-grid-cell>
+              <fluent-data-grid-cell>Type</fluent-data-grid-cell>
+              <fluent-data-grid-cell></fluent-data-grid-cell>
+            </fluent-data-grid-row>
 
-    loadPackages();
-  </script>
-</body>
+            <!-- Package row: Lost.HierarchyPlus -->
+            <fluent-data-grid-row
+              row-type="default"
+              data-package-name="Lost.HierarchyPlus"
+              data-package-id="com.lost.hierarchyplus"
+            >
+              <fluent-data-grid-cell>
+                <div class="packageName">Lost.HierarchyPlus</div>
+                <div class="caption2">com.lost.hierarchyplus</div>
+              </fluent-data-grid-cell>
+
+              <fluent-data-grid-cell>
+                A general improvement to the Unity hierarchy with component
+                icons, guide lines, row colouring and customization options.
+              </fluent-data-grid-cell>
+
+              <fluent-data-grid-cell>Tool</fluent-data-grid-cell>
+
+              <fluent-data-grid-cell>
+                <fluent-button
+                  appearance="accent"
+                  class="rowAddToVccButton"
+                >
+                  Add to VCC
+                </fluent-button>
+                <fluent-button
+                  appearance="neutral"
+                  class="rowPackageInfoButton ms-2"
+                  data-package-id="com.lost.hierarchyplus"
+                >
+                  …
+                </fluent-button>
+              </fluent-data-grid-cell>
+            </fluent-data-grid-row>
+          </fluent-data-grid>
+        </div>
+
+        <!-- Extra VCC URL field (for modal copy) -->
+        <div class="row mt-2">
+          <fluent-text-field
+            id="vccUrlField"
+            class="vccUrlField"
+            value="https://raw.githubusercontent.com/Lostfxn/Lost-VRChat-Scripts/main/vcc-repo.json"
+            readonly
+          >
+          </fluent-text-field>
+          <fluent-button
+            id="vccUrlFieldCopy"
+            class="ms-2"
+            appearance="neutral"
+          >
+            Copy
+          </fluent-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Package info modal -->
+    <fluent-dialog id="packageInfoModal" hidden>
+      <div class="col p-3">
+        <h3 id="packageInfoName" class="m-0 mb-1"></h3>
+        <div id="packageInfoId" class="caption2 mb-2"></div>
+        <div id="packageInfoVersion" class="caption1 mb-2"></div>
+
+        <p id="packageInfoDescription" class="m-0 mb-2"></p>
+
+        <p class="m-0 mb-2">
+          <strong>Author:</strong>
+          <a
+            id="packageInfoAuthor"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+          </a>
+        </p>
+
+        <div class="mb-2">
+          <strong>Dependencies:</strong>
+          <ul id="packageInfoDependencies" class="m-0 mt-1"></ul>
+        </div>
+
+        <div class="mb-2">
+          <strong>Keywords:</strong>
+          <div
+            id="packageInfoKeywords"
+            class="row mt-1"
+          ></div>
+        </div>
+
+        <div class="mb-2">
+          <strong>License:</strong>
+          <a
+            id="packageInfoLicense"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+          </a>
+        </div>
+
+        <div class="mt-3">
+          <div class="caption2 mb-1">
+            Use this URL to add the listing directly in VCC:
+          </div>
+          <div class="row">
+            <fluent-text-field
+              id="packageInfoVccUrlField"
+              class="vccUrlField"
+              value="https://raw.githubusercontent.com/Lostfxn/Lost-VRChat-Scripts/main/vcc-repo.json"
+              readonly
+            >
+            </fluent-text-field>
+            <fluent-button
+              id="packageInfoVccUrlFieldCopy"
+              class="ms-2"
+              appearance="neutral"
+            >
+              Copy
+            </fluent-button>
+          </div>
+          <fluent-button
+            id="packageInfoListingHelp"
+            appearance="stealth"
+            class="mt-2"
+          >
+            How do I use this in VCC?
+          </fluent-button>
+        </div>
+
+        <div class="row justify-content-end mt-3">
+          <fluent-button
+            id="packageInfoModalClose"
+            appearance="neutral"
+          >
+            Close
+          </fluent-button>
+        </div>
+      </div>
+    </fluent-dialog>
+
+    <!-- Optional: empty rowMoreMenu so JS doesn't break if you add menu later -->
+    <div id="rowMoreMenu" class="p-2 hidden">
+      <a id="rowMoreMenuDownload" href="#">Download package</a>
+    </div>
+
+    <!-- Your JS -->
+    <script type="module" src="app.js"></script>
+  </body>
 </html>
