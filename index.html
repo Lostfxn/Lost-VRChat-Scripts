@@ -20,21 +20,23 @@
 
   <body>
     <div class="col align-items-center">
-      <div class="content m-4">
+      <div class="content">
         <!-- Header -->
-        <div class="mb-3">
+        <div class="mb-3 text-center">
           <h1>Lost VRChat Tools</h1>
           <div class="caption1">
-            Useful tools for VRChat creators, avatar artists, and world
-            builders.
+            Listing for all publicly distributed assets by <a href="#" class="link-primary">Lost</a>.
           </div>
-          <div class="caption2">
-            VPM repository managed by <strong>Lost</strong>.
+          <div class="caption2 mt-2">
+            Published by <strong>Lost</strong>
+          </div>
+          <div class="mt-2">
+            <a href="#" class="link-primary">Go to Repositories</a>
           </div>
         </div>
 
         <!-- URL bar + Add to VCC -->
-        <div class="row align-items-center mb-2">
+        <div class="row align-items-center mb-2 url-bar-section">
           <fluent-text-field
             id="vccListingInfoUrlField"
             class="vccUrlField"
@@ -107,14 +109,14 @@
         <div class="packages">
           <fluent-data-grid
             id="packageGrid"
-            grid-template-columns="2.4fr 3fr 0.8fr 1.4fr"
+            grid-template-columns="2fr 3.5fr 0.8fr 1.8fr"
           >
             <!-- Header row -->
             <fluent-data-grid-row row-type="header">
-              <fluent-data-grid-cell>Name</fluent-data-grid-cell>
-              <fluent-data-grid-cell>Description</fluent-data-grid-cell>
-              <fluent-data-grid-cell>Type</fluent-data-grid-cell>
-              <fluent-data-grid-cell></fluent-data-grid-cell>
+              <fluent-data-grid-cell grid-column="1">Name</fluent-data-grid-cell>
+              <fluent-data-grid-cell grid-column="2">Description</fluent-data-grid-cell>
+              <fluent-data-grid-cell grid-column="3">Type</fluent-data-grid-cell>
+              <fluent-data-grid-cell grid-column="4"></fluent-data-grid-cell>
             </fluent-data-grid-row>
 
             <!-- Package row: Lost.HierarchyPlus -->
@@ -123,53 +125,48 @@
               data-package-name="Lost.HierarchyPlus"
               data-package-id="com.lost.hierarchyplus"
             >
-              <fluent-data-grid-cell>
+              <fluent-data-grid-cell grid-column="1">
                 <div class="packageName">Lost.HierarchyPlus</div>
                 <div class="caption2">com.lost.hierarchyplus</div>
               </fluent-data-grid-cell>
 
-              <fluent-data-grid-cell>
+              <fluent-data-grid-cell grid-column="2">
                 A general improvement to the Unity hierarchy with component
                 icons, guide lines, row colouring and customization options.
               </fluent-data-grid-cell>
 
-              <fluent-data-grid-cell>Tool</fluent-data-grid-cell>
+              <fluent-data-grid-cell grid-column="3">Tool</fluent-data-grid-cell>
 
-              <fluent-data-grid-cell>
-                <fluent-button
-                  appearance="accent"
-                  class="rowAddToVccButton"
-                >
-                  Add to VCC
-                </fluent-button>
-                <fluent-button
-                  appearance="neutral"
-                  class="rowPackageInfoButton ms-2"
-                  data-package-id="com.lost.hierarchyplus"
-                >
-                  …
-                </fluent-button>
+              <fluent-data-grid-cell grid-column="4">
+                <div class="row align-items-center">
+                  <fluent-button
+                    appearance="accent"
+                    class="rowAddToVccButton"
+                  >
+                    Add to VCC
+                  </fluent-button>
+                  <fluent-button
+                    appearance="stealth"
+                    class="rowPackageInfoButton ms-2"
+                    data-package-id="com.lost.hierarchyplus"
+                  >
+                    ⓘ
+                  </fluent-button>
+                  <fluent-button
+                    appearance="stealth"
+                    class="rowMenuButton ms-2"
+                  >
+                    …
+                  </fluent-button>
+                </div>
               </fluent-data-grid-cell>
             </fluent-data-grid-row>
           </fluent-data-grid>
         </div>
 
-        <!-- Extra VCC URL field (for modal copy) -->
-        <div class="row mt-2">
-          <fluent-text-field
-            id="vccUrlField"
-            class="vccUrlField"
-            value="https://raw.githubusercontent.com/Lostfxn/Lost-VRChat-Scripts/main/vcc-repo.json"
-            readonly
-          >
-          </fluent-text-field>
-          <fluent-button
-            id="vccUrlFieldCopy"
-            class="ms-2"
-            appearance="neutral"
-          >
-            Copy
-          </fluent-button>
+        <!-- Bottom link -->
+        <div class="mt-3 text-center">
+          <a href="#" class="link-primary">Go to Repositories</a>
         </div>
       </div>
     </div>

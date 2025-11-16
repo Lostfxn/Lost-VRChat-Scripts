@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: dark;
 }
 
 * {
@@ -15,7 +15,8 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--neutral-foreground-rest);
+  background-color: #1a1a1a;
+  color: #e0e0e0;
 }
 
 .hidden {
@@ -33,9 +34,10 @@ body {
 }
 
 .content {
-  max-width: 1000px;
+  max-width: 750px;
   width: 100%;
   margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
 .align-items-center {
@@ -50,25 +52,43 @@ body {
   justify-content: flex-end;
 }
 
+.text-center {
+  text-align: center;
+}
+
 h1 {
   margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
 }
 
 .caption1 {
-  font-size: 1rem;
-  color: var(--neutral-foreground-hover);
+  font-size: 0.95rem;
+  color: #b0b0b0;
+  line-height: 1.5;
 }
 
 .caption2 {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   margin-top: 0.25rem;
-  color: var(--neutral-foreground-rest);
+  color: #888888;
+}
+
+.link-primary {
+  color: #5eb3f6;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link-primary:hover {
+  text-decoration: underline;
 }
 
 .packages {
-  margin: 0.5rem 0 1rem 0;
-  max-width: 90%;
-  padding: 0.25rem;
+  margin: 1.5rem 0 1rem 0;
+  width: 100%;
+  padding: 0;
   display: flex;
   flex: 1;
 }
@@ -77,18 +97,32 @@ h1 {
   overflow-y: auto;
   width: 100%;
   max-height: 40rem;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  border: 1px solid #3a3a3a;
 }
 
 .packages .packageName {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin: 0.25rem 0;
+  margin: 0 0 0.25rem 0;
+  color: #ffffff;
+}
+
+.packages fluent-data-grid-cell:nth-child(2) {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+}
+
+.packages fluent-data-grid-cell:nth-child(3) {
+  color: #b0b0b0;
+  font-size: 0.9rem;
 }
 
 .searchBlock {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
   width: 100%;
-  max-width: 90%;
 }
 
 .searchBlock .root {
@@ -97,12 +131,18 @@ h1 {
 
 #searchInput {
   width: 100%;
+  --neutral-fill-input-rest: #2a2a2a;
+  --neutral-stroke-rest: #4a4a4a;
 }
 
 .vccUrlField {
-  min-width: 450px;
-  max-width: 90%;
-  flex-grow:1;
+  flex-grow: 1;
+  min-width: 300px;
+}
+
+.url-bar-section {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 #addListingToVccHelp {
@@ -123,7 +163,7 @@ h1 {
 #rowMoreMenu a {
   display: block;
   text-decoration: none;
-  color: var(--neutral-foreground-rest);
+  color: #e0e0e0;
 }
 
 .bannerImage {
@@ -140,7 +180,76 @@ h1 {
 .badge {
   border-radius: 4px;
   padding: 0.25rem 0.5rem;
-  background-color: var(--neutral-fill-hover);
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+}
+
+/* Dark theme overrides for Fluent UI components */
+fluent-text-field {
+  --neutral-fill-input-rest: #2a2a2a;
+  --neutral-foreground-rest: #e0e0e0;
+  --neutral-stroke-rest: #4a4a4a;
+  --neutral-fill-input-hover: #2f2f2f;
+}
+
+fluent-button[appearance="accent"] {
+  --accent-fill-rest: #5eb3f6;
+  --accent-fill-hover: #4a9fd8;
+  --accent-foreground-rest: #000000;
+}
+
+fluent-button[appearance="neutral"] {
+  --neutral-fill-rest: #3a3a3a;
+  --neutral-fill-hover: #454545;
+  --neutral-foreground-rest: #e0e0e0;
+}
+
+fluent-button[appearance="stealth"] {
+  --neutral-foreground-rest: #e0e0e0;
+  --neutral-fill-stealth-rest: transparent;
+  --neutral-fill-stealth-hover: #3a3a3a;
+}
+
+.rowAddToVccButton {
+  font-size: 0.875rem;
+}
+
+.rowPackageInfoButton,
+.rowMenuButton {
+  min-width: 36px;
+  font-size: 1rem;
+}
+
+fluent-data-grid {
+  --neutral-fill-rest: #2a2a2a;
+  --neutral-foreground-rest: #e0e0e0;
+  --neutral-stroke-rest: #3a3a3a;
+}
+
+fluent-data-grid-row {
+  --neutral-fill-rest: #2a2a2a;
+  --neutral-fill-hover: #353535;
+}
+
+fluent-data-grid-row[row-type="header"] {
+  --neutral-fill-rest: #2a2a2a;
+  font-weight: 600;
+}
+
+fluent-data-grid-cell {
+  color: #e0e0e0;
+  border-color: #3a3a3a;
+  padding: 16px 12px;
+  line-height: 1.5;
+}
+
+fluent-data-grid-row[row-type="default"] fluent-data-grid-cell {
+  border-bottom: 1px solid #3a3a3a;
+}
+
+fluent-data-grid-row[row-type="header"] fluent-data-grid-cell {
+  border-bottom: 1px solid #3a3a3a;
+  background-color: #2a2a2a;
 }
 
 .m-0 {
