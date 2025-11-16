@@ -9,6 +9,7 @@
         "1.0.0": {
           "name": "com.lost.hierarchyplus",
           "url": "https://github.com/Lostfxn/Lost-VRChat-Scripts.git#main",
+          "localPath": "Packages/com.lost.hierarchyplus",
           "unity": "2022.3",
           "vpmDependencies": {}
         }
