@@ -1,12 +1,12 @@
 {
-  "name": "com.Lost.hierarchyplus",
+  "name": "com.lost.hierarchyplus",
   "displayName": "Lost - HierarchyPlus",
   "version": "1.8.0",
   "description": "A general improvement to the unity hierarchy such as component icons, guide lines, row coloring and settings for customization.",
   "gitDependencies": {},
   "vpmDependencies": {},
   "author": {
-    "name": "Lost"
+    "name": "Lostfxn"
   },
   "legacyFolders": {},
   "legacyFiles": {},
